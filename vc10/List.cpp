@@ -85,7 +85,7 @@ bool List::onRect(int mouseX, int mouseY, Node* rect)
 Node* List::onThisRect(int mouseX, int mouseY)
 {
 	Node* currentNode = (*sentinel).nextNode;
-	while (currentNode != (*sentinel).prevNode)
+	while (currentNode != sentinel)
 	{
 		if (onRect(mouseX, mouseY, currentNode))
 		{
