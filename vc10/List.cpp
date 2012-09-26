@@ -62,8 +62,8 @@ void List::reverse()
  * @param rect: The address of the rectangle being evaluated if it was clicked on or not.
  * @return: Returns true if the mouse was clicked on the given rectangle or returns false otherwise.
  */
-bool List::onRect(int mouseX, int mouseY, Node* rect) 
-{
+bool List::onRect(int mouseX, int mouseY, Node* rect) // The names onRect and onThisRect are a little confusing. Is there a way to rename one of them or
+{                                                     // maybe put the two methods together? They're only used together right? -Stevie Yakkel
 	int deltaX = (*rect).xCoord - mouseX;
 	int deltaY = (*rect).yCoord - mouseY;
 	if (deltaX <= (*rect).width && deltaY <= (*rect).height) 
