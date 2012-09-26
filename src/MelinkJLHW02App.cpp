@@ -16,6 +16,12 @@ using namespace ci;
 using namespace ci::app;
 using namespace std;
 
+/**
+  * Overall I thought your program was organized pretty good. I also thought you did a great
+  * job commenting your code, although some things said were a little confusing. I didn't 
+  * change any of your code; however if something bothered me with your code, I commented 
+  * near what I would have changed as a suggestion. -Stevie Yakkel
+  */
 class MelinkJLHW02App : public AppBasic {
   public:
     List* linkedList;
@@ -46,7 +52,7 @@ void MelinkJLHW02App::prepareSettings(Settings* settings)
 /*
  * Establishes the first image.
  */
-void MelinkJLHW02App::setup()
+void MelinkJLHW02App::setup() // This doesn't draw/display any nodes though. Comment was a little missleading for me. -Stevie Yakkel
 {
 	mySurface = new Surface(textureSize, textureSize, false);
 	linkedList = new List;
@@ -75,8 +81,8 @@ void MelinkJLHW02App::mouseDown(MouseEvent event)
 	Node* nodeClicked = (*linkedList).onThisRect(mouseX, mouseY);
 	if (nodeClicked != 0 && nodeClicked != (*(*linkedList).sentinel).nextNode)
 	{
-		(*linkedList).moveToFront(nodeClicked);
-		(*linkedList).resize();
+		(*linkedList).moveToFront(nodeClicked); // I had a little trouble reading your moveToFront method, since I used the -> operator,
+		(*linkedList).resize();                 // but I feel like this is the method that is messed up. (more suggestion in this method) - Stevie Yakkel
 	}
 }
 
@@ -129,7 +135,7 @@ void clearPixelArray(uint8_t* pixelArray)
  * @param pixelArray: The pixel array to be modified.
  * @param linkedList: The linked list to be displayed on the screen in the form of rectangles.
  */
-void showListOnScreen(uint8_t* pixelArray, List* linkedList)
+void showListOnScreen(uint8_t* pixelArray, List* linkedList) 
 {
 	(*linkedList).reverse();  // Reverse list so that last item is being drawn first
 	Node* currentNode = (*(*linkedList).sentinel).nextNode;

@@ -4,8 +4,8 @@
  * This method moves the provided node to the front of the linked list and fixes the pointers to other nodes.
  * @param nodeToMove: The node to move to the front of the linked list.
  */
-void List::moveToFront(Node* nodeToMove)
-{
+void List::moveToFront(Node* nodeToMove) // Like I mentioned I had trouble reading it so I don't know exactly what is wrong or if it's wrong,
+{                                        // but a suggestion I have is to use your insertNode method in here somewhere. (Another suggestion in insertNode) -Stevie Yakkel
 	(*(*nodeToMove).prevNode).nextNode = (*nodeToMove).nextNode;
 	(*(*nodeToMove).nextNode).prevNode = (*nodeToMove).prevNode;
 	(*(*sentinel).nextNode).prevNode = nodeToMove;
@@ -21,10 +21,10 @@ void List::moveToFront(Node* nodeToMove)
  * @param yCoord: The y-coordinate of the new node.
  * @return: The new node inserted into the linked list.
  */
-Node* List::insertNode(Node* nodeToInsertAfter, int xCoord, int yCoord)
-{
-	Node* tempNode = new Node;
-	(*tempNode).nextNode = (*nodeToInsertAfter).nextNode;
+Node* List::insertNode(Node* nodeToInsertAfter, int xCoord, int yCoord) // This code works so this suggestion is more of a personal thing I guess, but I personally would
+{                                                                       // have used a Node as a parameter instead of the two ints like we did in class. You can see that  
+	Node* tempNode = new Node;                                          // the code is shorter and simpler. Also, you should still be able to access the xCoord and yCoord 
+	(*tempNode).nextNode = (*nodeToInsertAfter).nextNode;               // -Stevie Yakkel
 	(*tempNode).prevNode = nodeToInsertAfter;
 	(*nodeToInsertAfter).nextNode = tempNode;
 	(*(*tempNode).nextNode).prevNode = tempNode;
@@ -40,7 +40,7 @@ Node* List::insertNode(Node* nodeToInsertAfter, int xCoord, int yCoord)
  * This method completely reverses the order of the nodes in the list, making the first node last
  * and the last node first.
  */
-void List::reverse()
+void List::reverse() 
 {
 	Node* currentNode = sentinel;
 	Node* temp;
@@ -62,12 +62,12 @@ void List::reverse()
  * @param rect: The address of the rectangle being evaluated if it was clicked on or not.
  * @return: Returns true if the mouse was clicked on the given rectangle or returns false otherwise.
  */
-bool List::onRect(int mouseX, int mouseY, Node* rect)
-{
+bool List::onRect(int mouseX, int mouseY, Node* rect) // The names onRect and onThisRect are a little confusing. Is there a way to rename one of them or
+{                                                     // maybe put the two methods together? They're only used together right? -Stevie Yakkel
 	int deltaX = (*rect).xCoord - mouseX;
 	int deltaY = (*rect).yCoord - mouseY;
-	if (deltaX <= (*rect).width && deltaY <= (*rect).height)
-	{
+	if (deltaX <= (*rect).width && deltaY <= (*rect).height) 
+	{                                                        
 		return true;
 	}
 	else
